@@ -12,17 +12,34 @@ def formatar_tempo(segundos):
 
 def iniciar_cronometro():
   segundos = 0
-  try:
-    while True:
-        limpar_tela()
-        print("=== CRONÔMETRO DEVOPS ===")
-        print(f"Tempo: {formatar_tempo(segundos)}")
-        print("=========================")
-        print("Pressione CTRL+C para parar.")
-        time.sleep(1)
-        segundos += 1
-  except KeyboardInterrupt:
-    print("\nCronômetro Pausado!")
+  rodando = True
+  while True:
+      try:
+        if rodando:
+          limpar_tela()
+          print("=== CRONÔMETRO DEVOPS ===")
+          print(f"Tempo: {formatar_tempo(segundos)}")
+          print("=========================")
+          print("Pressione CTRL+C para PAUSAR / OPÇÕES")
+          time.sleep(1)
+          segundos += 1
+        else:
+          limpar_tela()
+          print("=== CRONÔMETRO PAUSADO ===")
+          print(f"Tempo parado em: {formatar_tempo(segundos)}")
+          print("=========================")
+          opcao = input("Escolha: (V)oltar, (R)esetar ou (S)air e Pressione ENTER para confirmar").upper()
+          if opcao == 'V':
+            rodando = True
+          elif opcao == 'R':
+            segundos = 0
+            rodando = True
+          elif opcao == 'S':
+            print("Encerrando...!")
+            break
+      except KeyboardInterrupt:
+        rodando = False
+    
 
 if __name__ == "__main__":
     input("Pressione ENTER para iniciar a contagem...")
