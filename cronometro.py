@@ -23,3 +23,7 @@ def iniciar_cronometro():
         segundos += 1
   except KeyboardInterrupt:
     print("\nCronômetro Pausado!")
+
+if __name__ == "__main__":
+    input("Pressione ENTER para iniciar a contagem...")
+    iniciar_cronometro()
