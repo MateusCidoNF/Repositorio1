@@ -26,7 +26,7 @@ jobs:
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
     - name: Testar com pytest
       run: |
-        pytest
+        pytest tests_cronometro.py
 
   deploy:
     needs: build
